@@ -44,17 +44,17 @@
 extern "C" {
 #endif
 
-    scpi_result_t SCPI_CoreCls(scpi_t * context);
+    scpi_result_t SCPI_FPTR_CMD SCPI_CoreCls(scpi_t * context);
     scpi_result_t SCPI_CoreEse(scpi_t * context);
     scpi_result_t SCPI_CoreEseQ(scpi_t * context);
-    scpi_result_t SCPI_CoreEsrQ(scpi_t * context);
-    scpi_result_t SCPI_CoreIdnQ(scpi_t * context);
+    scpi_result_t SCPI_FPTR_CMD SCPI_CoreEsrQ(scpi_t * context);
+    scpi_result_t SCPI_FPTR_CMD SCPI_CoreIdnQ(scpi_t * context);
     scpi_result_t SCPI_CoreOpc(scpi_t * context);
-    scpi_result_t SCPI_CoreOpcQ(scpi_t * context);
-    scpi_result_t SCPI_CoreRst(scpi_t * context);
+    scpi_result_t SCPI_FPTR_CMD SCPI_CoreOpcQ(scpi_t * context);
+    scpi_result_t SCPI_FPTR_CMD SCPI_CoreRst(scpi_t * context);
     scpi_result_t SCPI_CoreSre(scpi_t * context);
     scpi_result_t SCPI_CoreSreQ(scpi_t * context);
-    scpi_result_t SCPI_CoreStbQ(scpi_t * context);
+    scpi_result_t SCPI_FPTR_CMD SCPI_CoreStbQ(scpi_t * context);
     scpi_result_t SCPI_CoreTstQ(scpi_t * context);
     scpi_result_t SCPI_CoreWai(scpi_t * context);
 

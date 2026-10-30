@@ -68,7 +68,7 @@ scpi_result_t SCPI_StubQ(scpi_t * context) {
  * @param context
  * @return
  */
-scpi_result_t SCPI_SystemVersionQ(scpi_t * context) {
+scpi_result_t SCPI_FPTR_CMD SCPI_SystemVersionQ(scpi_t * context) {
     SCPI_ResultMnemonic(context, SCPI_STD_VERSION_REVISION);
     return SCPI_RES_OK;
 }
@@ -78,7 +78,7 @@ scpi_result_t SCPI_SystemVersionQ(scpi_t * context) {
  * @param context
  * @return
  */
-scpi_result_t SCPI_SystemErrorNextQ(scpi_t * context) {
+scpi_result_t SCPI_FPTR_CMD SCPI_SystemErrorNextQ(scpi_t * context) {
     scpi_error_t error;
     SCPI_ErrorPop(context, &error);
     SCPI_ResultError(context, &error);
@@ -93,7 +93,7 @@ scpi_result_t SCPI_SystemErrorNextQ(scpi_t * context) {
  * @param context
  * @return
  */
-scpi_result_t SCPI_SystemErrorCountQ(scpi_t * context) {
+scpi_result_t SCPI_FPTR_CMD SCPI_SystemErrorCountQ(scpi_t * context) {
     SCPI_ResultInt32(context, SCPI_ErrorCount(context));
 
     return SCPI_RES_OK;

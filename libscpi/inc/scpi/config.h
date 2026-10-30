@@ -44,6 +44,27 @@ extern "C" {
 
 #include "cc.h"
 
+/* xcore stack analysis needs a function-pointer group on every indirect
+ * call, or the linker cannot bound the task that reaches it. See
+ * scpi_interface_t and scpi_command_t in types.h. Empty on other targets. */
+/* Two groups, not one, because libscpi has two indirect-call sites and
+ * library functions straddle them: SCPI_CoreOpc / SCPI_CoreWai are
+ * command-table members that call back through context->interface->reset
+ * / flush / write. Sharing one group makes a member's stack size depend
+ * on the group containing it -- circular -- and xl1 reports it as
+ *   "lower bound could not be calculated (function is recursive?)".
+ * The dependency is one-directional (commands may reach the interface,
+ * never the reverse), so pricing commands from the interface group is
+ * acyclic. Membership must match what each pointer can actually point
+ * at: under-populating a group under-prices a real call. */
+#if defined(__xcore__)
+#  define SCPI_FPTR_IFACE __attribute__((fptrgroup("csd_scpi_iface")))
+#  define SCPI_FPTR_CMD   __attribute__((fptrgroup("csd_scpi_cmd")))
+#else
+#  define SCPI_FPTR_IFACE
+#  define SCPI_FPTR_CMD
+#endif
+
 #ifdef SCPI_USER_CONFIG
 #include "scpi_user_config.h"
 #endif

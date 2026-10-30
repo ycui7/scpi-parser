@@ -407,18 +407,18 @@ extern "C" {
 
     struct _scpi_command_t {
         const char * pattern;
-        scpi_command_callback_t callback;
+        scpi_command_callback_t callback SCPI_FPTR_CMD;
 #if USE_COMMAND_TAGS
         int32_t tag;
 #endif /* USE_COMMAND_TAGS */
     };
 
     struct _scpi_interface_t {
-        scpi_error_callback_t error;
-        scpi_write_t write;
-        scpi_write_control_t control;
-        scpi_command_callback_t flush;
-        scpi_command_callback_t reset;
+        scpi_error_callback_t error SCPI_FPTR_IFACE;
+        scpi_write_t write SCPI_FPTR_IFACE;
+        scpi_write_control_t control SCPI_FPTR_IFACE;
+        scpi_command_callback_t flush SCPI_FPTR_IFACE;
+        scpi_command_callback_t reset SCPI_FPTR_IFACE;
     };
 
     struct _scpi_t {

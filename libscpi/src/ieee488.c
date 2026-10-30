@@ -263,7 +263,7 @@ void SCPI_RegClearBits(scpi_t * context, scpi_reg_name_t name, scpi_reg_val_t bi
  * @param context
  * @return 
  */
-scpi_result_t SCPI_CoreCls(scpi_t * context) {
+scpi_result_t SCPI_FPTR_CMD SCPI_CoreCls(scpi_t * context) {
     SCPI_ErrorClear(context);
     int i;
     for (i = 0; i < SCPI_REG_GROUP_COUNT; ++i) {
@@ -304,7 +304,7 @@ scpi_result_t SCPI_CoreEseQ(scpi_t * context) {
  * @param context
  * @return 
  */
-scpi_result_t SCPI_CoreEsrQ(scpi_t * context) {
+scpi_result_t SCPI_FPTR_CMD SCPI_CoreEsrQ(scpi_t * context) {
     SCPI_ResultInt32(context, SCPI_RegGet(context, SCPI_REG_ESR));
     SCPI_RegSet(context, SCPI_REG_ESR, 0);
     return SCPI_RES_OK;
@@ -321,7 +321,7 @@ scpi_result_t SCPI_CoreEsrQ(scpi_t * context) {
  * @param context
  * @return 
  */
-scpi_result_t SCPI_CoreIdnQ(scpi_t * context) {
+scpi_result_t SCPI_FPTR_CMD SCPI_CoreIdnQ(scpi_t * context) {
     int i;
     for (i = 0; i < 4; i++) {
         if (context->idn[i]) {
@@ -348,7 +348,7 @@ scpi_result_t SCPI_CoreOpc(scpi_t * context) {
  * @param context
  * @return 
  */
-scpi_result_t SCPI_CoreOpcQ(scpi_t * context) {
+scpi_result_t SCPI_FPTR_CMD SCPI_CoreOpcQ(scpi_t * context) {
     /* Operation is always completed */
     SCPI_ResultInt32(context, 1);
     return SCPI_RES_OK;
@@ -359,7 +359,7 @@ scpi_result_t SCPI_CoreOpcQ(scpi_t * context) {
  * @param context
  * @return 
  */
-scpi_result_t SCPI_CoreRst(scpi_t * context) {
+scpi_result_t SCPI_FPTR_CMD SCPI_CoreRst(scpi_t * context) {
     if (context && context->interface && context->interface->reset) {
         return context->interface->reset(context);
     }
@@ -395,7 +395,7 @@ scpi_result_t SCPI_CoreSreQ(scpi_t * context) {
  * @param context
  * @return 
  */
-scpi_result_t SCPI_CoreStbQ(scpi_t * context) {
+scpi_result_t SCPI_FPTR_CMD SCPI_CoreStbQ(scpi_t * context) {
     SCPI_ResultInt32(context, SCPI_RegGet(context, SCPI_REG_STB));
     return SCPI_RES_OK;
 }

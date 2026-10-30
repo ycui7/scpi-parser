@@ -47,9 +47,9 @@ extern "C" {
     scpi_result_t SCPI_Stub(scpi_t * context);
     scpi_result_t SCPI_StubQ(scpi_t * context);
 
-    scpi_result_t SCPI_SystemVersionQ(scpi_t * context);
-    scpi_result_t SCPI_SystemErrorNextQ(scpi_t * context);
-    scpi_result_t SCPI_SystemErrorCountQ(scpi_t * context);
+    scpi_result_t SCPI_FPTR_CMD SCPI_SystemVersionQ(scpi_t * context);
+    scpi_result_t SCPI_FPTR_CMD SCPI_SystemErrorNextQ(scpi_t * context);
+    scpi_result_t SCPI_FPTR_CMD SCPI_SystemErrorCountQ(scpi_t * context);
     scpi_result_t SCPI_StatusQuestionableEventQ(scpi_t * context);
     scpi_result_t SCPI_StatusQuestionableConditionQ(scpi_t * context);
     scpi_result_t SCPI_StatusQuestionableEnableQ(scpi_t * context);
